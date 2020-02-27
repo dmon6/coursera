@@ -1,0 +1,8 @@
+Error,Count
+Timeout while retrieving information,7
+Created ticket,9
+Commented on ticket,5
+Connection to DB failed,8
+Closed ticket,7
+The ticket was modified while updating,4
+Ticket,1

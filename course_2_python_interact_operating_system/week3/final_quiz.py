@@ -1,15 +1,13 @@
 #!/usr/bin/env python3.7
 
-#!/usr/bin/env python3
-
 import re
 import csv
 
 
 def contains_domain(address, domain):
   """Returns True if the email address contains the given,domain,in the domain position, false if not."""
-  domain = r'[\w\.-]+@'+domain+'$'
-  if re.match(domain,address):
+  domain = r'[\w\.-]+@' + domain + '$'
+  if re.match(domain, address):
     return True
   return False
 
@@ -19,6 +17,7 @@ def replace_domain(address, old_domain, new_domain):
   old_domain_pattern = r'' + old_domain + '$'
   address = re.sub(old_domain_pattern, new_domain, address)
   return address
+
 
 def main():
   """Processes the list of emails, replacing any instances of the old domain with the new domain."""
@@ -36,7 +35,7 @@ def main():
     for email_address in user_email_list:
       if contains_domain(email_address, old_domain):
         old_domain_email_list.append(email_address)
-        replaced_email = replace_domain(email_address,old_domain,new_domain)
+        replaced_email = replace_domain(email_address, old_domain, new_domain)
         new_domain_email_list.append(replaced_email)
 
     email_key = ' ' + 'Email Address'
@@ -52,5 +51,6 @@ def main():
     writer = csv.writer(output_file)
     writer.writerows(user_data_list)
     output_file.close()
+
 
 main()
