@@ -41,3 +41,13 @@ per_user = 	{}
 
 match_user = "([\w]*)\)$"
 match_error = re.search(r"ticky: ERROR ([\w ]*) ", line_error)
+
+with open(file) as f:
+	for line in f:
+		match = re.search(match_error, line)
+		if match:
+			error_message = match.group(1)
+			error[error_message] = error.get(error_message, 0) + 1
+		user = re.search(match_user, line)
+		if user:
+			username = user.group(1).replace(')', '')
